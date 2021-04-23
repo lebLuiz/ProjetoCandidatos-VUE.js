@@ -1,12 +1,46 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <span>
+        <el-button
+          type="info"
+          v-for="caminho in caminhos" :key="caminho.titulo"
+          @click="caminho.rota">{{ caminho.titulo }}</el-button>
+      </span>
+
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+
+  data() {
+    return {
+      caminhos: [
+        {
+          titulo: 'Dashboard',
+          rota: () =>  {
+            if (this.$route.name != 'Dashboard') {
+              this.$router.push({ name: 'Dashboard' })
+            }
+          },
+        },
+        {
+          titulo: 'Lista',
+          rota: () =>  {
+            if (this.$route.name != 'Lista') {
+              this.$router.push({ name: 'Lista' })
+            }
+          },
+        },
+      ]
+    }
+  }
+
+}
+</script>
 
 <style lang="scss">
 #app {
