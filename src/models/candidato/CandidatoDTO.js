@@ -1,5 +1,4 @@
 export default class {
-
     idCandidato = null;
 	nomeCandidato = null;
     dataNasc = null;
@@ -10,5 +9,4 @@ export default class {
     descricao = null;
 
     constructor(){}
-
 }

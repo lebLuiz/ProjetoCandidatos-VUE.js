@@ -32,6 +32,7 @@
             style="width: 100%"
         >
             <el-table-column align="center" label="Candidato" prop="nomeCandidato"> </el-table-column>
+
             <el-table-column align="center" label="Nascimento">
                 <template slot-scope="{row}">
                     <el-tag
@@ -41,6 +42,7 @@
                     </el-tag>
                 </template>
             </el-table-column>
+
             <el-table-column align="center" label="Descrição">
                 <template slot-scope="{row}">
                     <span v-if="row.descricao=='' || row.descricao==null" class="nao-ha-dados" >
@@ -69,6 +71,7 @@
                     </el-tag>
                 </template>
             </el-table-column>
+
             <el-table-column align="center" label="Superior" >
                 <template slot-scope="{row}">
                     <el-tag
@@ -78,6 +81,7 @@
                     </el-tag>
                 </template>
             </el-table-column>
+
             <el-table-column align="center" label="Trabalhando" >
                 <template slot-scope="{row}">
                     <el-tag
@@ -87,6 +91,7 @@
                     </el-tag>
                 </template>
             </el-table-column>
+
             <el-table-column align="right">
             <template slot-scope="scope">
                 <el-button icon="el-icon-edit"
@@ -101,8 +106,8 @@
                 
             </template>
             </el-table-column>
-        </el-table>
 
+        </el-table>
 
         <el-dialog :center="true" :title="candidatoDTO.idCandidato==null?'Novo candidato':'Editando Candidato'" :visible.sync="visibleDialogCandidato">
             <el-form :model="candidatoDTO" :rules="rules" ref="candidatoDTO" label-position="top">
@@ -248,19 +253,16 @@ export default {
 
         novoCandidato() {
             this.candidatoDTO = new CandidatoDTO();
-            
             this.visibleDialogCandidato = true;
         },
 
         confirmarRemocao (index) {
             this.listaCandidatos.splice(index, 1);
-
             this.processoRemocaoEInsercaoLocalStorage();
         },
 
         cancelarSalvamentoCandidato () {
             this.visibleDialogCandidato = false;
-
             this.candidatoDTO = new CandidatoDTO();
         },
         salvarCandidato (formName) {
@@ -304,7 +306,6 @@ export default {
 
         async processoRemocaoEInsercaoLocalStorage() {
             await window.localStorage.removeItem('listaCandidatos');
-
             window.localStorage.setItem('listaCandidatos', JSON.stringify(this.listaCandidatos));
         },
     },
