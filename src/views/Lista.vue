@@ -96,7 +96,7 @@
             <template slot-scope="scope">
                 <el-button icon="el-icon-edit"
                     style="margin-right: 5px;" size="mini"
-                    @click="tratarEdicao(scope.$index, scope.row)" />
+                    @click="tratarEdicao(scope.row)" />
 
 
                 <el-button icon="el-icon-delete"
